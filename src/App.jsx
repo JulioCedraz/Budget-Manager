@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { ThemeProvider, ThemeToggle, useTheme, themeColors } from './components/Themes.jsx';
 import BudgetTable from './components/BudgetTable.jsx';
 import BudgetForm from './components/BudgetForm.jsx';
 import EditModal from './components/EditModal.jsx';
 import DeleteModal from './components/DeleteModal.jsx';
 
 const App = () => {
+  const { theme } = useTheme();
   const [budgetData, setBudgetData] = useState([]);
   const [editingItem, setEditingItem] = useState(null);
-  const [deletingIndex, setDeletingIndex] = useState(null); // Estado para controlar qual item está sendo deletado
+  const [deletingIndex, setDeletingIndex] = useState(null);
 
   const categories = [
     "Alimentação", "Transporte", "Lazer", "Saúde", "Educação", 
@@ -18,9 +20,13 @@ const App = () => {
 
   const loadBudgetData = async () => {
     // Aqui você deve implementar a lógica para buscar dados da API do Google Sheets usando Sheet2API.
-    const response = await fetch('SUA_API_DO_GOOGLE_SHEETS');
-    const data = await response.json();
-    setBudgetData(data);
+    try {
+      const response = await fetch('SUA_API_DO_GOOGLE_SHEETS');
+      const data = await response.json();
+      setBudgetData(data);
+    } catch (error) {
+      console.error("Erro ao carregar dados:", error);
+    }
   };
 
   const addRow = (newRow) => {
@@ -74,37 +80,65 @@ const App = () => {
     loadBudgetData();
   }, []);
 
-// -----------------------------------------------------------------------
-// -----------------------------------------------------------------------
-
   return (
-    <div className="container mx-auto">
-      <h1 className='font-bold text-2xl text-center p-4'>Gerenciador de Orçamento</h1>
-      <BudgetForm addRow={addRow} categories={categories} />
-      <BudgetTable 
-        budgetData={budgetData} 
-        deleteRow={openDeleteModal} // Passa a função para abrir o modal
-        editRow={editRow}
-        categories={categories}
-      />
-      {editingItem && (
-        <EditModal 
-          isOpen={!!editingItem} 
-          onClose={closeEditModal}
-          item={editingItem}
-          onSave={saveEditedRow}
-          categories={categories}
-        />
-      )}
-      {deletingIndex !== null && (
-        <DeleteModal 
-          isOpen={deletingIndex !== null} 
-          onClose={closeDeleteModal} 
-          onConfirm={confirmDelete} // Passa a função de confirmação
-        />
-      )}
+    <div className={`min-h-screen transition-colors duration-300 ${themeColors[theme].background}`}>
+      <div className="container mx-auto relative">
+        <ThemeToggle />
+
+        <h1 className={`font-bold text-2xl text-center p-4`}>
+          Gerenciador de Orçamento
+        </h1>
+
+        <div className={`p-4 rounded-lg ${themeColors[theme].container}`}>
+          <BudgetForm 
+            addRow={addRow} 
+            categories={categories} 
+            theme={theme}
+            themeColors={themeColors}
+          />
+          
+          <BudgetTable 
+            budgetData={budgetData} 
+            deleteRow={openDeleteModal}
+            editRow={editRow}
+            categories={categories}
+            theme={theme}
+            themeColors={themeColors}
+          />
+        </div>
+
+        {editingItem && (
+          <EditModal 
+            isOpen={!!editingItem} 
+            onClose={closeEditModal}
+            item={editingItem}
+            onSave={saveEditedRow}
+            categories={categories}
+            theme={theme}
+            themeColors={themeColors}
+          />
+        )}
+
+        {deletingIndex !== null && (
+          <DeleteModal 
+            isOpen={deletingIndex !== null} 
+            onClose={closeDeleteModal} 
+            onConfirm={confirmDelete}
+            theme={theme}
+            themeColors={themeColors}
+          />
+        )}
+      </div>
     </div>
   );
 };
 
-export default App;
+const BudgetManager = () => {
+  return (
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
+  );
+};
+
+export default BudgetManager;

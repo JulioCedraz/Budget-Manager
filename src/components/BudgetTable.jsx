@@ -1,11 +1,14 @@
 import React from "react";
 import { Edit2Icon, Trash2Icon } from "lucide-react";
+import { useTheme } from './Themes.jsx';
 
-const BudgetTable = ({ budgetData, editRow , deleteRow}) => {
+const BudgetTable = ({ budgetData, editRow, deleteRow }) => {
+  const { theme, themeColors } = useTheme();
+
   return (
-    <table className="m-1 mt-4 w-[98%] bg-slate-200 text-center border-2 border-gray-300 rounded-md">
+    <table className={`m-1 mt-4 w-[98%] text-center border-2 rounded-md ${themeColors[theme].tableBorder}`}>
       <thead>
-        <tr className="bg-gray-300 border-2 border-gray-300 rounded-md text-xs sm:text-sm md:text-base">
+        <tr className={`border-2 rounded-md text-xs sm:text-sm md:text-base ${themeColors[theme].tableHeader}`}>
           <th>Produto</th>
           <th>Categoria</th>
           <th>Quantidade</th>
@@ -17,7 +20,7 @@ const BudgetTable = ({ budgetData, editRow , deleteRow}) => {
       </thead>
       <tbody>
         {budgetData.map((item, index) => (
-          <tr key={index} className="text-xs sm:text-sm md:text-base border-4 border-gray-300 ">
+          <tr key={index} className={`text-xs sm:text-sm md:text-base border-4 ${themeColors[theme].tableBorder}`}>
             <td>{item.produto}</td>
             <td>{item.categoria}</td>
             <td>{item.quantidade}</td>
@@ -26,20 +29,18 @@ const BudgetTable = ({ budgetData, editRow , deleteRow}) => {
             <td>{item.data}</td>
 
             <td>
-              {/* Botão de edição */}
               <button
                 onClick={() => editRow(index)}
                 title="Corrigir"
-                className="bg-slate-500 text-white rounded-md hover:bg-slate-600 m-1 p-1"
+                className={`text-white rounded-md m-1 p-1 ${themeColors[theme].button.edit}`}
               >
                 <Edit2Icon />
               </button>
 
-              {/* Botão de exclusão */}
               <button
-                onClick={() => deleteRow(index)} // Agora chama openDeleteModal
+                onClick={() => deleteRow(index)}
                 title="Apagar"
-                className="bg-red-500 text-white rounded-md hover:bg-red-600 m-1 p-1"
+                className={`text-white rounded-md m-1 p-1 ${themeColors[theme].button.delete}`}
               >
                 <Trash2Icon />
               </button>

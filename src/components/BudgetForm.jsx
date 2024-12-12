@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTheme } from './Themes.jsx';
 
 const BudgetForm = ({ addRow, categories }) => {
   const [produto, setProduto] = useState("");
@@ -7,10 +8,11 @@ const BudgetForm = ({ addRow, categories }) => {
   const [custo, setCusto] = useState("");
   const [data, setData] = useState("");
 
+  const { theme, themeColors } = useTheme();
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Calcular o total
     const total = (quantidade * custo).toFixed(2);
 
     addRow({ produto, categoria, quantidade, custo, total, data });
@@ -26,7 +28,7 @@ const BudgetForm = ({ addRow, categories }) => {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col items-start">
       <div className="m-2 w-[98%]">
-        <label htmlFor="produto" className="block mb-1">
+        <label htmlFor="produto" className={`block mb-1`}>
           Produto:
         </label>
         <input
@@ -36,12 +38,12 @@ const BudgetForm = ({ addRow, categories }) => {
           onChange={(e) => setProduto(e.target.value)}
           placeholder="Informe o produto"
           required
-          className="border border-gray-300 rounded-md p-1 w-[98%]"
+          className={`border rounded-md p-1 w-[98%] ${themeColors[theme].input}`}
         />
       </div>
 
       <div className="m-2 w-[98%]">
-        <label htmlFor="categoria" className="block mb-1">
+        <label htmlFor="categoria" className={`block mb-1`}>
           Categoria:
         </label>
         <select
@@ -49,7 +51,7 @@ const BudgetForm = ({ addRow, categories }) => {
           value={categoria}
           onChange={(e) => setCategoria(e.target.value)}
           required
-          className="border border-gray-300 rounded-md p-1 w-[98%]"
+          className={`border rounded-md p-1 w-[98%] ${themeColors[theme].input}`}
         >
           <option value="">Selecione uma categoria</option>
           {categories.map((category, index) => (
@@ -61,7 +63,7 @@ const BudgetForm = ({ addRow, categories }) => {
       </div>
 
       <div className="m-2 w-[98%]">
-        <label htmlFor="quantidade" className="block mb-1">
+        <label htmlFor="quantidade" className={`block mb-1`}>
           Quantidade:
         </label>
         <input
@@ -71,14 +73,12 @@ const BudgetForm = ({ addRow, categories }) => {
           onChange={(e) => setQuantidade(e.target.value)}
           placeholder="Digite a quantidade"
           required
-          className="border border-gray-300 rounded-md p-1 w-[98%]"
+          className={`border rounded-md p-1 w-[98%] ${themeColors[theme].input}`}
         />
       </div>
 
-
-
       <div className="m-2 w-[98%]">
-        <label htmlFor="custo" className="block mb-1">
+        <label htmlFor="custo" className={`block mb-1`}>
           Custo por unidade em R$:
         </label>
         <input
@@ -88,12 +88,12 @@ const BudgetForm = ({ addRow, categories }) => {
           onChange={(e) => setCusto(e.target.value)}
           placeholder="Custo"
           required
-          className="border border-gray-300 rounded-md p-1 w-[98%]"
+          className={`border rounded-md p-1 w-[98%] ${themeColors[theme].input}`}
         />
       </div>
 
       <div className="m-2 w-[98%]">
-        <label htmlFor="data" className="block mb-1">
+        <label htmlFor="data" className={`block mb-1`}>
           Data:
         </label>
         <input
@@ -102,15 +102,16 @@ const BudgetForm = ({ addRow, categories }) => {
           value={data}
           onChange={(e) => setData(e.target.value)}
           required
-          className="border border-gray-300 rounded-md p-1 w-[98%]"
+          className={`border rounded-md p-1 w-[98%] ${themeColors[theme].input}`}
         />
       </div>
 
       <button
         type="submit"
-        className="cursor-pointer duration-300 m-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md p-2"
+        className={`cursor-pointer duration-300 m-2 text-white rounded-md p-2 ${themeColors[theme].button.add}`}
         title="Adicionar item"
-      >Adicionar item
+      >
+        Adicionar item
       </button>
     </form>
   );

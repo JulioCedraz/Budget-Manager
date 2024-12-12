@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { X } from "lucide-react";
+import { useTheme } from './Themes.jsx';
 
-const EditModal = ({ isOpen, onClose, item, onSave, categories }) => {
+const EditModal = ({ 
+  isOpen, 
+  onClose, 
+  item, 
+  onSave, 
+  categories
+}) => {
+  const { theme, themeColors } = useTheme();
   const [editedItem, setEditedItem] = useState({ ...item });
   const [total, setTotal] = useState(0);
 
@@ -34,19 +42,19 @@ const EditModal = ({ isOpen, onClose, item, onSave, categories }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white rounded-lg p-6 w-96 relative">
+      <div className={`rounded-lg p-6 w-96 relative ${themeColors[theme].container}`}>
         <button
           onClick={onClose}
-          className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+          className={`absolute top-2 right-2 ${theme === 'light' ? 'text-gray-500 hover:text-gray-700' : 'text-gray-300 hover:text-gray-100'}`}
         >
           <X />
         </button>
-        <h2 className="text-xl font-bold mb-4">Editar item</h2>
+        <h2 className={`text-xl font-bold mb-4`}>Editar item</h2>
 
         {/* Adicionando o formulário aqui para cada item ser validado independentemente */}
         <form onSubmit={handleSave}>
           <div className="mb-4">
-            <label htmlFor="produto" className="block mb-1">
+            <label htmlFor="produto" className={`block mb-1`}>
               Produto:
             </label>
             <input
@@ -55,19 +63,19 @@ const EditModal = ({ isOpen, onClose, item, onSave, categories }) => {
               value={editedItem.produto}
               onChange={handleChange}
               required
-              className="border border-gray-300 rounded-md p-1 w-full"
+              className={`border rounded-md p-1 w-full ${themeColors[theme].input}`}
             />
           </div>
 
           <div className="mb-4">
-            <label htmlFor="categoria" className="block mb-1">
+            <label htmlFor="categoria" className={`block mb-1 `}>
               Categoria:
             </label>
             <select
               id="categoria"
               value={editedItem.categoria}
               onChange={handleChange}
-              className="border border-gray-300 rounded-md p-1 w-full"
+              className={`border rounded-md p-1 w-full ${themeColors[theme].input}`}
               required
             >
               {categories.map((category, index) => (
@@ -78,8 +86,9 @@ const EditModal = ({ isOpen, onClose, item, onSave, categories }) => {
             </select>
           </div>
 
+          {/* Outros inputs seguem o mesmo padrão */}
           <div className="mb-4">
-            <label htmlFor="quantidade" className="block mb-1">
+            <label htmlFor="quantidade" className={`block mb-1 `}>
               Quantidade:
             </label>
             <input
@@ -88,12 +97,12 @@ const EditModal = ({ isOpen, onClose, item, onSave, categories }) => {
               value={editedItem.quantidade}
               onChange={handleChange}
               required
-              className="border border-gray-300 rounded-md p-1 w-full"
+              className={`border rounded-md p-1 w-full ${themeColors[theme].input}`}
             />
           </div>
 
           <div className="mb-4">
-            <label htmlFor="custo" className="block mb-1">
+            <label htmlFor="custo" className={`block mb-1 `}>
               Custo em R$:
             </label>
             <input
@@ -102,23 +111,23 @@ const EditModal = ({ isOpen, onClose, item, onSave, categories }) => {
               value={editedItem.custo}
               onChange={handleChange}
               required
-              className="border border-gray-300 rounded-md p-1 w-full"
+              className={`border rounded-md p-1 w-full ${themeColors[theme].input}`}
             />
           </div>
 
-          {/* Exibir o total calculado */}
+          {/* Total calculado */}
           <div className="mb-4">
-            <label className="block mb-1">Total:</label>
+            <label className={`block mb-1 `}>Total:</label>
             <input
               type="text"
               value={`R$ ${total}`}
               readOnly
-              className="border border-gray-300 rounded-md p-1 w-full bg-gray-100 cursor-not-allowed"
+              className={`border rounded-md p-1 w-full bg-gray-100 cursor-not-allowed ${themeColors[theme].input}`}
             />
           </div>
 
           <div className="mb-4">
-            <label htmlFor="data" className="block mb-1">
+            <label htmlFor="data" className={`block mb-1 `}>
               Data:
             </label>
             <input
@@ -127,7 +136,7 @@ const EditModal = ({ isOpen, onClose, item, onSave, categories }) => {
               value={editedItem.data}
               onChange={handleChange}
               required
-              className="border border-gray-300 rounded-md p-1 w-full"
+              className={`border rounded-md p-1 w-full ${themeColors[theme].input}`}
             />
           </div>
 
@@ -135,13 +144,15 @@ const EditModal = ({ isOpen, onClose, item, onSave, categories }) => {
             <button
               type="button"
               onClick={onClose}
-              className="bg-gray-300 text-gray-700 rounded-md p-2 hover:bg-gray-400"
+              className={`rounded-md p-2 ${theme === 'light' 
+                ? 'bg-gray-300 text-gray-700 hover:bg-gray-400' 
+                : 'bg-gray-700 text-gray-200 hover:bg-gray-600'}`}
             >
               Cancelar
             </button>
             <button
               type="submit"
-              className="bg-blue-500 text-white rounded-md p-2 hover:bg-blue-600"
+              className={`text-white rounded-md p-2 ${themeColors[theme].button.add}`}
             >
               Salvar
             </button>
