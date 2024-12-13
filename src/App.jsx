@@ -85,9 +85,11 @@ const App = () => {
       <div className="container mx-auto relative">
         <ThemeToggle />
 
-        <h1 className={`font-bold text-2xl text-center p-4`}>
-          Gerenciador de Orçamento
+        <h1 className="font-bold text-2xl text-center p-4">
+          Gerenciador Financeiro
         </h1>
+
+        <h2 className='text-xl p-2'>Controle todos os seus gastos aqui!</h2>
 
         <div className={`p-4 rounded-lg ${themeColors[theme].container}`}>
           <BudgetForm 
