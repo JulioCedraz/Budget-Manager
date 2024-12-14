@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import {
-  ThemeProvider, ThemeToggle,
-  useTheme, themeColors
+  ThemeProvider,
+  ThemeToggle,
+  useTheme,
+  themeColors,
 } from "./components/Themes.jsx";
 import BudgetTable from "./components/BudgetTable.jsx";
 import BudgetForm from "./components/BudgetForm.jsx";
@@ -98,23 +100,27 @@ const App = () => {
     <div
       className={`min-h-screen transition-colors duration-300 ${themeColors[theme].background}`}
     >
-      <div className="container mx-auto relative overflow-y-auto">
-        <ThemeToggle />
+      <ThemeToggle />
 
-        <h1 className="font-bold text-2xl text-center p-4">
-          Gerenciador Financeiro
-        </h1>
+      <h1 className="font-bold text-2xl text-center p-4">
+        Gerenciador Financeiro
+      </h1>
 
-        <h2 className="text-xl p-2">Controle todos os seus gastos aqui!</h2>
-
-        <div className={`p-4 rounded-lg ${themeColors[theme].container}`}>
+      <div className="container px-4 mx-auto relative overflow-y-auto rounded-xl md:max-w-[75%]">
+        <div className={`p-4 mb-4 rounded-lg ${themeColors[theme].container}`}>
           <BudgetForm
             addRow={addRow}
             categories={categories}
             theme={theme}
             themeColors={themeColors}
           />
+        </div>
 
+        <h2 className="text-xl text-center p-2">
+          Visualize as suas despesas aqui:
+        </h2>
+
+        <div className={`px-4 rounded-lg ${themeColors[theme].container}`}>
           <BudgetTable
             budgetData={budgetData}
             deleteRow={openDeleteModal}
@@ -147,7 +153,7 @@ const App = () => {
           />
         )}
       </div>
-      <div className="mt-8">
+      <div className="mt-12">
         <Footer />
       </div>
     </div>

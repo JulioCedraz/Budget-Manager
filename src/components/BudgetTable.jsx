@@ -6,28 +6,28 @@ const BudgetTable = ({ budgetData, editRow, deleteRow }) => {
   const { theme, themeColors } = useTheme();
 
   return (
-    <div className="overflow-x-auto text-nowrap">
+    <div className="overflow-x-auto text-nowrap py-2">
       <table
-        className={`m-1 mt-4 w-full text-center border-2 rounded-md ${themeColors[theme].tableBorder}`}
+        className={`my-2 w-full text-center border-2 rounded-md ${themeColors[theme].tableBorder}`}
       >
         <thead>
           <tr
-            className={`border-2 rounded-md text-xs sm:text-sm md:text-base ${themeColors[theme].tableHeader}`}
+            className={`${themeColors[theme].tableHeader}`}
           >
-            <th>Produto</th>
-            <th>Categoria</th>
+            <th className="p-2">Produto</th>
+            <th className="p-2">Categoria</th>
             <th className="p-2">Quantidade</th>
-            <th>Custo (un)</th>
+            <th className="p-2">Custo (un)</th>
             <th className="p-2">Total (R$)</th>
-            <th>Data</th>
-            <th>Editar/Apagar</th>
+            <th className="p-2">Data</th>
+            <th className="px-4">Editar/Apagar</th>
           </tr>
         </thead>
         <tbody>
           {budgetData.map((item, index) => (
             <tr
               key={index}
-              className={`text-xs sm:text-sm md:text-base border-2 ${themeColors[theme].tableBorder}`}
+              className={`border-2 ${themeColors[theme].tableBorder}`}
             >
               <td className="p-2">{item.produto}</td>
               <td>{item.categoria}</td>

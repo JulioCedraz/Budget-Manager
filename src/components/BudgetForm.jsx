@@ -26,8 +26,8 @@ const BudgetForm = ({ addRow, categories }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col items-start">
-      <div className="m-2 w-[98%]">
+    <form onSubmit={handleSubmit} className="mx-6">
+      <div className="m-2 mb-4">
         <label htmlFor="produto" className={`block mb-1`}>
           Produto:
         </label>
@@ -42,7 +42,7 @@ const BudgetForm = ({ addRow, categories }) => {
         />
       </div>
 
-      <div className="m-2 w-[98%]">
+      <div className="m-2 mb-4">
         <label htmlFor="categoria" className={`block mb-1`}>
           Categoria:
         </label>
@@ -62,7 +62,7 @@ const BudgetForm = ({ addRow, categories }) => {
         </select>
       </div>
 
-      <div className="m-2 w-[98%]">
+      <div className="m-2 mb-4">
         <label htmlFor="quantidade" className={`block mb-1`}>
           Quantidade:
         </label>
@@ -77,7 +77,7 @@ const BudgetForm = ({ addRow, categories }) => {
         />
       </div>
 
-      <div className="m-2 w-[98%]">
+      <div className="m-2 mb-4">
         <label htmlFor="custo" className={`block mb-1`}>
           Custo por unidade em R$:
         </label>
@@ -92,7 +92,7 @@ const BudgetForm = ({ addRow, categories }) => {
         />
       </div>
 
-      <div className="m-2 w-[98%]">
+      <div className="m-2 mb-4">
         <label htmlFor="data" className={`block mb-1`}>
           Data:
         </label>
@@ -108,7 +108,7 @@ const BudgetForm = ({ addRow, categories }) => {
 
       <button
         type="submit"
-        className={`cursor-pointer duration-300 m-2 text-white rounded-md p-2 ${themeColors[theme].button.add}`}
+        className={`cursor-pointer duration-300 m-2 p-2 text-white rounded-md ${themeColors[theme].button.add}`}
         title="Adicionar item"
       >
         Adicionar item
