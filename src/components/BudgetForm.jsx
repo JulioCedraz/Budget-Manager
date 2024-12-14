@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useTheme } from './Themes.jsx';
+import { useTheme } from "./Themes.jsx";
 
 const BudgetForm = ({ addRow, categories }) => {
   const [produto, setProduto] = useState("");
@@ -10,13 +10,20 @@ const BudgetForm = ({ addRow, categories }) => {
 
   const { theme, themeColors } = useTheme();
 
+  const isFormComplete =
+    produto.trim() !== "" &&
+    categoria !== "" &&
+    quantidade.trim() !== "" &&
+    custo.trim() !== "" &&
+    data.trim() !== "";
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const total = (quantidade * custo).toFixed(2);
 
     addRow({ produto, categoria, quantidade, custo, total, data });
-    
+
     // Limpar os campos após o envio
     setProduto("");
     setCategoria("");
@@ -102,13 +109,22 @@ const BudgetForm = ({ addRow, categories }) => {
           value={data}
           onChange={(e) => setData(e.target.value)}
           required
+          min="1900-01-01"
+          max="2099-12-31"
           className={`border rounded-md p-1 w-[98%] ${themeColors[theme].input}`}
         />
       </div>
 
       <button
         type="submit"
-        className={`cursor-pointer duration-300 m-2 p-2 text-white rounded-md ${themeColors[theme].button.add}`}
+        disabled={!isFormComplete}
+        className={`duration-300 m-2 p-2 text-white rounded-md 
+          ${
+            isFormComplete
+              ? `${themeColors[theme].button.add} cursor-pointer`
+              : "bg-gray-400 cursor-not-allowed"
+          }
+      `}
         title="Adicionar item"
       >
         Adicionar item

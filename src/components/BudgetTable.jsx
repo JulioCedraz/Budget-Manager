@@ -18,7 +18,7 @@ const BudgetTable = ({ budgetData, editRow, deleteRow }) => {
             <th className="p-2">Custo (un)</th>
             <th className="p-2">Total (R$)</th>
             <th className="p-2">Data</th>
-            <th className="px-4">Editar/Apagar</th>
+            <th className="p-2">Editar/Apagar</th>
           </tr>
         </thead>
         <tbody>
