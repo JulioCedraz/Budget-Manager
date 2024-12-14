@@ -11,8 +11,8 @@ Informe as características do produto com o nome, selecione uma categoria, quan
 
 ## Funcionalidades
 - Adicionar, editar e excluir as despesas/compras
-- Calcular saldo total de cada item
+- Calcular o valor total de cada item (custo unitário * quantidade)
 - Filtrar por categoria (em breve)
-- Calcular saldo total de todos os itens (em breve)
+- Calcular o saldo total de todos os itens (em breve)
 
 Mais funcionalidades serão adicionadas em breve.

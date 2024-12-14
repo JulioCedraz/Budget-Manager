@@ -21,7 +21,7 @@ export const themeColors = {
     container: 'bg-gray-800',
     tableHeader: 'bg-gray-900 border-gray-600',
     tableBorder: 'border-gray-600',
-    input: 'bg-gray-600 border-gray-500  text-gray-100',
+    input: 'bg-gray-600 border-gray-500 text-gray-100',
     button: {
       edit: 'bg-slate-600 hover:bg-slate-500',
       delete: 'bg-red-800 hover:bg-red-700',

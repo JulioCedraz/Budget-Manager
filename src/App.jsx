@@ -16,6 +16,7 @@ const App = () => {
   const [budgetData, setBudgetData] = useState([]);
   const [editingItem, setEditingItem] = useState(null);
   const [deletingIndex, setDeletingIndex] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState("Todas");
 
   const categories = [
     "Alimentação",
@@ -31,7 +32,7 @@ const App = () => {
     "Viagens",
     "Impostos",
     "Beleza e Estética",
-    "Não definido",
+    "Não definida",
   ];
 
   const loadBudgetData = async () => {
@@ -96,6 +97,12 @@ const App = () => {
     loadBudgetData();
   }, []);
 
+  // Filtro de dados com base na categoria selecionada
+  const filteredBudgetData = budgetData.filter(
+    (item) =>
+      selectedCategory === "Todas" || item.categoria === selectedCategory
+  );
+
   return (
     <div
       className={`min-h-screen transition-colors duration-300 ${themeColors[theme].background}`}
@@ -107,7 +114,7 @@ const App = () => {
       </h1>
 
       <div className="container px-4 mx-auto relative overflow-y-auto rounded-xl md:max-w-[75%]">
-        <div className={`p-4 mb-4 rounded-lg ${themeColors[theme].container}`}>
+        <div className={`p-4 mb-2 rounded-lg ${themeColors[theme].container}`}>
           <BudgetForm
             addRow={addRow}
             categories={categories}
@@ -120,12 +127,28 @@ const App = () => {
           Visualize as suas despesas aqui:
         </h2>
 
+        {/* Componente de seleção de categoria */}
+        Filtre por categoria:
+        <select
+          value={selectedCategory}
+          onChange={(e) => setSelectedCategory(e.target.value)}
+          className={`m-4 p-1 border rounded ${themeColors[theme].input}`}
+        >
+          <option value="Todas">Todas</option>
+          {categories.map((category, index) => (
+            <option key={index} value={category}>
+              {category}
+            </option>
+          ))}
+        </select>
+
         <div className={`px-4 rounded-lg ${themeColors[theme].container}`}>
           <BudgetTable
-            budgetData={budgetData}
+            budgetData={filteredBudgetData}
             deleteRow={openDeleteModal}
             editRow={editRow}
             categories={categories}
+            selectedCategory={selectedCategory}
             theme={theme}
             themeColors={themeColors}
           />
