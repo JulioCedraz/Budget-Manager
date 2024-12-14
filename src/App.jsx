@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { ThemeProvider, ThemeToggle, useTheme, themeColors } from './components/Themes.jsx';
-import BudgetTable from './components/BudgetTable.jsx';
-import BudgetForm from './components/BudgetForm.jsx';
-import EditModal from './components/EditModal.jsx';
-import DeleteModal from './components/DeleteModal.jsx';
+import React, { useState, useEffect } from "react";
+import {
+  ThemeProvider, ThemeToggle,
+  useTheme, themeColors
+} from "./components/Themes.jsx";
+import BudgetTable from "./components/BudgetTable.jsx";
+import BudgetForm from "./components/BudgetForm.jsx";
+import EditModal from "./components/EditModal.jsx";
+import DeleteModal from "./components/DeleteModal.jsx";
+import Footer from "./components/Footer.jsx";
 
 const App = () => {
   const { theme } = useTheme();
@@ -12,16 +16,26 @@ const App = () => {
   const [deletingIndex, setDeletingIndex] = useState(null);
 
   const categories = [
-    "Alimentação", "Transporte", "Lazer", "Saúde", "Educação", 
-    "Moradia", "Serviços", "Roupas", "Tecnologia", 
-    "Entretenimento", "Viagens", "Impostos", 
-    "Beleza e Estética", "Não definido"
+    "Alimentação",
+    "Transporte",
+    "Lazer",
+    "Saúde",
+    "Educação",
+    "Moradia",
+    "Serviços",
+    "Roupas",
+    "Tecnologia",
+    "Entretenimento",
+    "Viagens",
+    "Impostos",
+    "Beleza e Estética",
+    "Não definido",
   ];
 
   const loadBudgetData = async () => {
     // Aqui você deve implementar a lógica para buscar dados da API do Google Sheets usando Sheet2API.
     try {
-      const response = await fetch('SUA_API_DO_GOOGLE_SHEETS');
+      const response = await fetch("SUA_API_DO_GOOGLE_SHEETS");
       const data = await response.json();
       setBudgetData(data);
     } catch (error) {
@@ -46,7 +60,7 @@ const App = () => {
 
   const saveEditedRow = (editedItem) => {
     const newBudgetData = [...budgetData];
-    newBudgetData[editedItem.index] = { 
+    newBudgetData[editedItem.index] = {
       produto: editedItem.produto,
       categoria: editedItem.categoria,
       quantidade: editedItem.quantidade,
@@ -81,26 +95,28 @@ const App = () => {
   }, []);
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${themeColors[theme].background}`}>
-      <div className="container mx-auto relative">
+    <div
+      className={`min-h-screen transition-colors duration-300 ${themeColors[theme].background}`}
+    >
+      <div className="container mx-auto relative overflow-y-auto">
         <ThemeToggle />
 
         <h1 className="font-bold text-2xl text-center p-4">
           Gerenciador Financeiro
         </h1>
 
-        <h2 className='text-xl p-2'>Controle todos os seus gastos aqui!</h2>
+        <h2 className="text-xl p-2">Controle todos os seus gastos aqui!</h2>
 
         <div className={`p-4 rounded-lg ${themeColors[theme].container}`}>
-          <BudgetForm 
-            addRow={addRow} 
-            categories={categories} 
+          <BudgetForm
+            addRow={addRow}
+            categories={categories}
             theme={theme}
             themeColors={themeColors}
           />
-          
-          <BudgetTable 
-            budgetData={budgetData} 
+
+          <BudgetTable
+            budgetData={budgetData}
             deleteRow={openDeleteModal}
             editRow={editRow}
             categories={categories}
@@ -110,8 +126,8 @@ const App = () => {
         </div>
 
         {editingItem && (
-          <EditModal 
-            isOpen={!!editingItem} 
+          <EditModal
+            isOpen={!!editingItem}
             onClose={closeEditModal}
             item={editingItem}
             onSave={saveEditedRow}
@@ -122,14 +138,17 @@ const App = () => {
         )}
 
         {deletingIndex !== null && (
-          <DeleteModal 
-            isOpen={deletingIndex !== null} 
-            onClose={closeDeleteModal} 
+          <DeleteModal
+            isOpen={deletingIndex !== null}
+            onClose={closeDeleteModal}
             onConfirm={confirmDelete}
             theme={theme}
             themeColors={themeColors}
           />
         )}
+      </div>
+      <div className="mt-8">
+        <Footer />
       </div>
     </div>
   );

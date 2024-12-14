@@ -1,6 +1,6 @@
-# Gerenciador de orçamentos
+# Gerenciador de despesas
 
-Adicione os produtos/compras para controlar seu orçamento. 
+Adicione os produtos/compras para visualizar os seus gastos. 
 Informe as características do produto com o nome, selecione uma categoria, quantidade, custo por unidade e a data em que foi comprado.
 
 ## Tecnologias utilizadas
@@ -10,9 +10,9 @@ Informe as características do produto com o nome, selecione uma categoria, quan
 - React
 
 ## Funcionalidades
-- Adicionar despesas/compras
-- Editar e excluir as despesas/compras
-- Filtrar por categoria
-- Calcular saldo total por item
+- Adicionar, editar e excluir as despesas/compras
+- Calcular saldo total de cada item
+- Filtrar por categoria (em breve)
+- Calcular saldo total de todos os itens (em breve)
 
 Mais funcionalidades serão adicionadas em breve.
