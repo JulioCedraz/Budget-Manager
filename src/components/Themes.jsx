@@ -45,12 +45,12 @@ export const ThemeProvider = ({ children }) => {
 };
 
 export const ThemeToggle = () => {
-  const { theme, toggleTheme, themeColors } = useContext(ThemeContext);
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
     <button 
       onClick={toggleTheme} 
-      className="absolute h-10 w-10 top-0 right-0 pb-2 pl-3 rounded-bl-full sm:top-4 sm:right-4 sm:p-2 sm:rounded-full bg-gray-200 text-gray-100 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+      className="absolute h-10 w-10 top-0 right-0 pb-2 pl-3 rounded-bl-full sm:top-4 sm:right-4 sm:p-2 sm:rounded-full text-gray-100 bg-gray-700 hover:bg-gray-600"
     >
       {theme === 'light' ? <MoonIcon /> : <SunIcon />}
     </button>
