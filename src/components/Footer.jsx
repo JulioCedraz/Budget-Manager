@@ -1,9 +1,11 @@
 import React from "react";
 import { FaGithub } from "react-icons/fa";
+import { useTheme, themeColors } from './Themes.jsx';
 
 function Footer() {
+  const { theme } = useTheme();
   return (
-    <div className="fixed bottom-0 w-full bg-gray-200 p-2 text-center text-gray-700">
+    <div className={`fixed bottom-0 w-full p-2 text-center ${themeColors[theme].background}`}>
       <footer>
         <p>
           Desenvolvido por{" "}
@@ -15,7 +17,7 @@ function Footer() {
             <strong>Julio Cedraz</strong>
             <FaGithub
               size={20}
-              color="black"
+              color={`${theme === 'light' ? 'black' : 'white'}`}
               className="inline-block ml-1 mb-1.5"
             />
           </a>
