@@ -3,9 +3,9 @@ import { FaGithub } from "react-icons/fa";
 
 function Footer() {
   return (
-    <div className="fixed bottom-0 w-full bg-gray-200 p-2 text-center">
+    <div className="fixed bottom-0 w-full bg-gray-200 p-2 text-center text-gray-700">
       <footer>
-        <p className="text-gray-700">
+        <p>
           Desenvolvido por{" "}
           <a
             href="https://github.com/juliocedraz"
