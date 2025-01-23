@@ -17,7 +17,7 @@ Os produtos serão listados logo abaixo do formulário e podem ser editados, exc
 - Filtra por categoria;
 - Gera uma planilha em PDF com todos os itens listados e o valor total;
 
-Funcionalidades que serão adicionadas em breve:
+## Em breve
 
 - Campo exclusivo para adicionar receitas
 - Cálculo de saldo total (receitas - despesas)
