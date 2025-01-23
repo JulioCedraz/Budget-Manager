@@ -12,10 +12,10 @@ Os produtos serão listados logo abaixo do formulário e podem ser editados, exc
 
 ## Funcionalidades
 
-- Adiciona, edita e exclui itens;
-- Calcula o valor total de cada item (custo unitário * quantidade);
-- Filtra por categoria;
-- Gera uma planilha em PDF com todos os itens listados e o valor total;
+- Adiciona, edita e exclui itens
+- Calcula o valor total de cada item (custo unitário * quantidade)
+- Filtra por categoria
+- Gera uma planilha em PDF com todos os itens listados e o valor total
 
 ## Em breve
 
