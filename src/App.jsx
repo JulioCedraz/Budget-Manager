@@ -5,6 +5,8 @@ import {
   useTheme,
   themeColors,
 } from "./components/Themes.jsx";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import BudgetReport from "./components/BudgetReport";
 import BudgetTable from "./components/BudgetTable.jsx";
 import BudgetForm from "./components/BudgetForm.jsx";
 import EditModal from "./components/EditModal.jsx";
@@ -17,6 +19,7 @@ const App = () => {
   const [editingItem, setEditingItem] = useState(null);
   const [deletingIndex, setDeletingIndex] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("Todas");
+  const [pdfFileName, setPdfFileName] = useState("Relatório");
 
   const categories = [
     "Alimentação",
@@ -97,7 +100,7 @@ const App = () => {
     loadBudgetData();
   }, []);
 
-  // Filtro de dados com base na categoria selecionada
+  // Filtro de dados por categoria
   const filteredBudgetData = budgetData.filter(
     (item) =>
       selectedCategory === "Todas" || item.categoria === selectedCategory
@@ -113,7 +116,7 @@ const App = () => {
         Gerenciador Financeiro
       </h1>
 
-      <div className="container px-4 mx-auto relative overflow-y-auto rounded-xl md:max-w-[75%]">
+      <div className="container px-4 mx-auto relative overflow-y-auto rounded-xl md:max-w-[70%]">
         <div className={`p-4 mb-2 rounded-lg ${themeColors[theme].container}`}>
           <BudgetForm
             addRow={addRow}
@@ -122,25 +125,51 @@ const App = () => {
             themeColors={themeColors}
           />
         </div>
-
         <h2 className="text-xl text-center p-2">
-          Visualize as suas despesas aqui:
+          Manipule o seu relatório:
         </h2>
-
-        {/* Componente de seleção de categoria */}
-        Filtre por categoria:
-        <select
-          value={selectedCategory}
-          onChange={(e) => setSelectedCategory(e.target.value)}
-          className={`m-4 p-1 border rounded ${themeColors[theme].input}`}
-        >
-          <option value="Todas">Todas</option>
-          {categories.map((category, index) => (
-            <option key={index} value={category}>
-              {category}
-            </option>
-          ))}
-        </select>
+        
+        {/* Componente pai do filtro de categorias e do gerador de relatório */}
+        <div className="flex flex-col justify-between items-center m-2 lg:flex-row">
+          {/* Filtro de categorias */}
+          <div className="flex items-center mb-4 lg:mb-0">
+            <label htmlFor="category-select" className="mr-2">
+              Categoria:
+            </label>
+            <select
+              id="category-select"
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+              className={`p-1 border rounded ${themeColors[theme].input}`}
+            >
+              <option value="Todas">Todas</option>
+              {categories.map((category, index) => (
+                <option key={index} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
+          </div>
+          {/* Gerador de relatório */}
+          <div className="flex items-center sm:mt-0">
+            <input
+              type="text"
+              value={pdfFileName}
+              onChange={(e) => setPdfFileName(e.target.value)}
+              placeholder="Nome do relatório"
+              className={`p-2 border rounded ${themeColors[theme].input}`}
+            />
+            <PDFDownloadLink
+              document={<BudgetReport budgetData={filteredBudgetData} />}
+              fileName={`${pdfFileName}.pdf`}
+              className={`ml-2 p-2 ${themeColors[theme].button.add} text-white rounded`}
+            >
+              {({ loading }) =>
+                loading ? "Gerando PDF..." : "Baixar Relatório"
+              }
+            </PDFDownloadLink>
+          </div>
+        </div>
 
         <div className={`px-4 rounded-lg ${themeColors[theme].container}`}>
           <BudgetTable
@@ -153,7 +182,6 @@ const App = () => {
             themeColors={themeColors}
           />
         </div>
-
         {editingItem && (
           <EditModal
             isOpen={!!editingItem}
@@ -165,7 +193,6 @@ const App = () => {
             themeColors={themeColors}
           />
         )}
-
         {deletingIndex !== null && (
           <DeleteModal
             isOpen={deletingIndex !== null}
