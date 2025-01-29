@@ -1,7 +1,6 @@
 import React from 'react';
 import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
 
-// Estilos aprimorados para o documento PDF
 const styles = StyleSheet.create({
   page: {
     flexDirection: 'column',
@@ -98,7 +97,6 @@ const styles = StyleSheet.create({
   },
 });
 
-// Formatar valores monetários
 const formatCurrency = (value) => {
   return `R$ ${Number(value).toFixed(2).replace('.', ',')}`;
 };
@@ -206,7 +204,7 @@ const BudgetReport = ({ budgetData = new Date() }) => {
 
         {/* Rodapé */}
         <Text style={styles.footer}>
-          Este é um documento gerado automaticamente. Página 1 de 1
+          Este é um documento gerado pelo Gestor de Despesas desenvolvido por Julio Cedraz. 
         </Text>
       </Page>
     </Document>
