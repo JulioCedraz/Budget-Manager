@@ -95,7 +95,7 @@ const App = () => {
       <ThemeToggle />
 
       <h1 className="font-bold text-2xl text-center p-4">
-        Gerenciador Financeiro
+        Gestor de Despesas
       </h1>
 
       <div className="container px-4 mx-auto relative overflow-y-auto rounded-xl md:max-w-[70%]">
