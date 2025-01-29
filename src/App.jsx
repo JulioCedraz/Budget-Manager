@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   ThemeProvider,
   ThemeToggle,
@@ -19,7 +19,7 @@ const App = () => {
   const [editingItem, setEditingItem] = useState(null);
   const [deletingIndex, setDeletingIndex] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("Todas");
-  const [pdfFileName, setPdfFileName] = useState("Relatório");
+  const [pdfFileName, setPdfFileName] = useState("Minhas despesas");
 
   const categories = [
     "Alimentação",
@@ -38,26 +38,13 @@ const App = () => {
     "Não definida",
   ];
 
-  const loadBudgetData = async () => {
-    // Aqui você deve implementar a lógica para buscar dados da API do Google Sheets usando Sheet2API.
-    try {
-      const response = await fetch("SUA_API_DO_GOOGLE_SHEETS");
-      const data = await response.json();
-      setBudgetData(data);
-    } catch (error) {
-      console.error("Erro ao carregar dados:", error);
-    }
-  };
-
   const addRow = (newRow) => {
     setBudgetData([...budgetData, newRow]);
-    // Chame a função para adicionar a nova linha ao Google Sheets aqui.
   };
 
   const deleteRow = (index) => {
     const newBudgetData = budgetData.filter((_, i) => i !== index);
     setBudgetData(newBudgetData);
-    // Chame a função para remover a linha do Google Sheets aqui.
   };
 
   const editRow = (index) => {
@@ -75,7 +62,6 @@ const App = () => {
       total: editedItem.total,
     };
     setBudgetData(newBudgetData);
-    // Chame a função para atualizar a linha no Google Sheets aqui.
     setEditingItem(null);
   };
 
@@ -95,10 +81,6 @@ const App = () => {
     deleteRow(deletingIndex);
     closeDeleteModal();
   };
-
-  useEffect(() => {
-    loadBudgetData();
-  }, []);
 
   // Filtro de dados por categoria
   const filteredBudgetData = budgetData.filter(
