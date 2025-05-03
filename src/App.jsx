@@ -147,7 +147,7 @@ const App = () => {
               className={`ml-2 p-2 ${themeColors[theme].button.add} text-white rounded`}
             >
               {({ loading }) =>
-                loading ? "Gerando PDF..." : "Baixar Relatório"
+                loading ? "Gerando PDF..." : "Baixar em PDF"
               }
             </PDFDownloadLink>
           </div>
