@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { X } from "lucide-react";
-import { useTheme } from './Themes.jsx';
+import { useTheme } from '../context/Themes';
 
 const EditModal = ({ 
   isOpen, 

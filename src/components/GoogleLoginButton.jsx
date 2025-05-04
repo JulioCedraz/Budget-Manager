@@ -1,8 +1,11 @@
 import React from "react";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../Firebase";
+import { useTheme } from "../context/Themes";
 
 function GoogleLoginButton() {
+  const { theme } = useTheme();
+
   const handleGoogleLogin = async () => {
     const provider = new GoogleAuthProvider();
     try {
@@ -15,7 +18,12 @@ function GoogleLoginButton() {
 
   return (
     <button
-      className="w-full flex items-center justify-center gap-3 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 py-3 px-4 rounded-lg shadow-sm transition duration-150"
+      className={`w-full flex items-center justify-center gap-3 
+        ${theme === 'dark' 
+          ? 'bg-gray-700 border-gray-600 text-gray-200 hover:bg-gray-600' 
+          : 'bg-white border-gray-300 text-gray-700 hover:bg-gray-50'
+        } 
+        border py-3 px-4 rounded-lg shadow-sm transition duration-150`}
       onClick={handleGoogleLogin}
       type="button"
     >

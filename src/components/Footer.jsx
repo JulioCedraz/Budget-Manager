@@ -1,6 +1,6 @@
 import React from "react";
 import { FaGithub } from "react-icons/fa";
-import { useTheme, themeColors } from './Themes.jsx';
+import { useTheme, themeColors } from '../context/Themes';
 
 function Footer() {
   const { theme } = useTheme();

@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../Firebase";
+import { useTheme } from "../context/Themes";
 
 function LoginForm() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [erro, setErro] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const { theme, themeColors } = useTheme();
+  const colors = themeColors[theme];
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -26,12 +29,16 @@ function LoginForm() {
   return (
     <form onSubmit={handleLogin} className="space-y-4">
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+        <label htmlFor="email" className={`block text-sm font-medium ${theme === 'dark' ? 'text-gray-200' : 'text-gray-700'} mb-1`}>
           Email
         </label>
         <input
           id="email"
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+          className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 ${
+            theme === 'dark' 
+              ? 'bg-gray-700 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-400' 
+              : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
+          } transition`}
           type="email"
           placeholder="seu@email.com"
           value={email}
@@ -42,16 +49,20 @@ function LoginForm() {
       
       <div>
         <div className="flex justify-between">
-          <label htmlFor="senha" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="senha" className={`block text-sm font-medium ${theme === 'dark' ? 'text-gray-200' : 'text-gray-700'} mb-1`}>
             Senha
           </label>
-          <a href="#" className="text-sm text-blue-600 hover:text-blue-800">
+          <a href="#" className={`text-sm ${theme === 'dark' ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-800'}`}>
             Esqueceu a senha?
           </a>
         </div>
         <input
           id="senha"
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+          className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 ${
+            theme === 'dark' 
+              ? 'bg-gray-700 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-400' 
+              : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
+          } transition`}
           type="password"
           placeholder="Sua senha"
           value={senha}
@@ -63,7 +74,11 @@ function LoginForm() {
       {erro && <p className="text-sm text-red-600">{erro}</p>}
       
       <button
-        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition flex items-center justify-center"
+        className={`w-full ${
+          theme === 'dark'
+            ? 'bg-blue-700 hover:bg-blue-600'
+            : 'bg-blue-600 hover:bg-blue-700'
+        } text-white font-medium py-2 px-4 rounded-lg transition flex items-center justify-center`}
         type="submit"
         disabled={isLoading}
       >

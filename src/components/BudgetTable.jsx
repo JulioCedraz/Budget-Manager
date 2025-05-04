@@ -1,6 +1,6 @@
 import React from "react";
 import { Edit2Icon, Trash2Icon } from "lucide-react";
-import { useTheme } from "./Themes.jsx";
+import { useTheme } from "../context/Themes";
 
 const BudgetTable = ({ budgetData, editRow, deleteRow }) => {
   const { theme, themeColors } = useTheme();
