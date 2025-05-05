@@ -3,7 +3,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../Firebase";
 import { useTheme } from "../context/Themes";
 
-function LoginForm() {
+function LoginForm({ onForgotPassword }) {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [erro, setErro] = useState("");
@@ -52,9 +52,16 @@ function LoginForm() {
           <label htmlFor="senha" className={`block text-sm font-medium ${theme === 'dark' ? 'text-gray-200' : 'text-gray-700'} mb-1`}>
             Senha
           </label>
-          <a href="#" className={`text-sm ${theme === 'dark' ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-800'}`}>
+          <button 
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              onForgotPassword(email);
+            }}
+            className={`text-sm ${theme === 'dark' ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-800'}`}
+          >
             Esqueceu a senha?
-          </a>
+          </button>
         </div>
         <input
           id="senha"

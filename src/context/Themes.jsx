@@ -6,6 +6,7 @@ const ThemeContext = createContext();
 export const themeColors = {
   light: {
     background: 'bg-gray-200 text-gray-900',
+    loginBg:'bg-gradient-to-br from-blue-500 via-teal-500 to-emerald-400',
     container: 'bg-gray-100',
     tableHeader: 'bg-gray-300 border-gray-300',
     tableBorder: 'border-gray-300',
@@ -14,10 +15,11 @@ export const themeColors = {
       edit: 'bg-slate-500 hover:bg-slate-400',
       delete: 'bg-red-600 hover:bg-red-500',
       add: 'bg-blue-600 hover:bg-blue-500'
-    }
+    },
   },
   dark: {
     background: 'bg-gray-900 text-gray-100',
+    loginBg:'bg-gradient-to-br from-blue-900 via-teal-900 to-emerald-800',
     container: 'bg-gray-800',
     tableHeader: 'bg-gray-900 border-gray-600',
     tableBorder: 'border-gray-600',
@@ -26,7 +28,7 @@ export const themeColors = {
       edit: 'bg-slate-600 hover:bg-slate-500',
       delete: 'bg-red-800 hover:bg-red-700',
       add: 'bg-blue-700 hover:bg-blue-600'
-    }
+    },
   }
 };
 
