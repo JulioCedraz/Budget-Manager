@@ -24,7 +24,7 @@ function UserInfo() {
           <img 
             src={usuario.photoURL} 
             alt="Foto de perfil" 
-            className="w-8 h-8 rounded-full object-cover border border-gray-200"
+            className="w-8 h-8 rounded-full object-cover"
           />
         ) : (
           <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white">
