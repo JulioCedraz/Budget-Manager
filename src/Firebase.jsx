@@ -2,13 +2,13 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAo0lzzDb-3cvp7lkvdf5rLUhu4i4J_d_4",
-  authDomain: "budget-manager-37737.firebaseapp.com",
-  projectId: "budget-manager-37737",
-  storageBucket: "budget-manager-37737.firebasestorage.app",
-  messagingSenderId: "586916191923",
-  appId: "1:586916191923:web:1783a9af327ae12d621ac6",
-  measurementId: "G-GKG12PL6KY"
+  apiKey: "AIzaSyA0OfJxUiERCFzEwW7fqM7VMAQ7biD3qmw",
+  authDomain: "budget-manager-by-julio-cedraz.firebaseapp.com",
+  projectId: "budget-manager-by-julio-cedraz",
+  storageBucket: "budget-manager-by-julio-cedraz.firebasestorage.app",
+  messagingSenderId: "537189823143",
+  appId: "1:537189823143:web:14557db5eb6989d5eda182",
+  measurementId: "G-50NQZTSF94"
 };
 
 // Inicializa o Firebase
