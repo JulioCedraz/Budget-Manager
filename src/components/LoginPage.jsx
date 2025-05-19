@@ -3,6 +3,7 @@ import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 import ForgotPasswordForm from "./ForgotPasswordForm";
 import GoogleLoginButton from "./GoogleLoginButton";
+import Footer from "./Footer";
 import { useTheme, ThemeToggle } from "../context/Themes";
 
 function LoginPage() {
@@ -22,7 +23,7 @@ function LoginPage() {
   };
 
   return (
-    <div className={`min-h-screen flex items-center justify-center ${colors.loginBg}`}>
+    <div className={`min-h-screen flex flex-col items-center justify-center ${colors.loginBg}`}>
       <div className={`w-full max-w-md ${colors.container} shadow-2xl rounded-xl p-8 space-y-6 relative`}>
         <ThemeToggle />
         <h1 className={`text-3xl font-bold text-center ${theme === 'dark' ? 'text-gray-100' : 'text-gray-800'}`}>
@@ -84,6 +85,7 @@ function LoginPage() {
           </>
         )}
       </div>
+      <Footer />
     </div>
   );
 }
