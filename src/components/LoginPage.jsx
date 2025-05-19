@@ -63,7 +63,7 @@ function LoginPage() {
                   <div className="relative flex items-center justify-center">
                     <div className={`absolute w-full border-t ${theme === 'dark' ? 'border-gray-600' : 'border-gray-300'}`}></div>
                     <div className={`relative ${colors.container} px-4`}>
-                      <span className={`text-sm text-gray-${theme === 'dark' ? '300' : '500'}`}>ou continue com</span>
+                      <span className={`text-sm text-gray-${theme === 'dark' ? '300' : '500'}`}>ou</span>
                     </div>
                   </div>
                   <GoogleLoginButton />
@@ -74,7 +74,7 @@ function LoginPage() {
                   <div className="relative flex items-center justify-center">
                     <div className={`absolute w-full border-t ${theme === 'dark' ? 'border-gray-600' : 'border-gray-300'}`}></div>
                     <div className={`relative ${colors.container} px-4`}>
-                      <span className={`text-sm text-gray-${theme === 'dark' ? '300' : '500'}`}>ou continue com</span>
+                      <span className={`text-sm text-gray-${theme === 'dark' ? '300' : '500'}`}>ou</span>
                     </div>
                   </div>
                   <GoogleLoginButton />
