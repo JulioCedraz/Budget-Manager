@@ -69,8 +69,8 @@ const AppContent = () => {
   }
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${themeColors[theme].background}`}>
-      <div className="p-4">
+    <div className={`min-h-screen duration-300 ${themeColors[theme].background}`}>
+      <div className="px-4">
         <div className="container mx-auto flex justify-between items-center mb-4">
           <ThemeToggle />
           <UserInfo />
@@ -157,10 +157,7 @@ const AppContent = () => {
             />
           )}
         </div>
-
-        <div className="mt-12">
           <Footer />
-        </div>
       </div>
     </div>
   );
