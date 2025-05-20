@@ -8,8 +8,7 @@ function LoginForm({ onForgotPassword }) {
   const [senha, setSenha] = useState("");
   const [erro, setErro] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const { theme, themeColors } = useTheme();
-  const colors = themeColors[theme];
+  const { theme } = useTheme();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -36,7 +35,7 @@ function LoginForm({ onForgotPassword }) {
           id="email"
           className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 ${
             theme === 'dark' 
-              ? 'bg-gray-700 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-400' 
+              ? 'bg-gray-700 border-gray-600 text-white focus:ring-blue-400 focus:border-blue-400' 
               : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
           } transition`}
           type="email"
@@ -67,7 +66,7 @@ function LoginForm({ onForgotPassword }) {
           id="senha"
           className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 ${
             theme === 'dark' 
-              ? 'bg-gray-700 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-400' 
+              ? 'bg-gray-700 border-gray-600 text-white focus:ring-blue-400 focus:border-blue-400' 
               : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
           } transition`}
           type="password"

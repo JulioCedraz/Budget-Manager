@@ -10,8 +10,7 @@ function LoginPage() {
   const [activeTab, setActiveTab] = useState("login");
   const [showForgotPassword, setShowForgotPassword] = useState(false);
   const [recoveryEmail, setRecoveryEmail] = useState("");
-  const { theme, themeColors } = useTheme();
-  const colors = themeColors[theme];
+  const { theme, colors } = useTheme();
 
   const handleForgotPassword = (email) => {
     setRecoveryEmail(email);
@@ -23,8 +22,8 @@ function LoginPage() {
   };
 
   return (
-    <div className={`min-h-screen flex flex-col items-center justify-center ${colors.loginBg}`}>
-      <div className={`w-full max-w-md ${colors.container} shadow-2xl rounded-xl p-8 space-y-6 relative`}>
+    <div className={`min-h-screen flex flex-col items-center justify-center ${colors[theme].loginBg}`}>
+      <div className={`w-full max-w-md ${colors[theme].container} shadow-2xl rounded-xl p-8 space-y-6 relative`}>
         <ThemeToggle />
         <h1 className={`text-3xl font-bold text-center ${theme === 'dark' ? 'text-gray-100' : 'text-gray-800'}`}>
           Gestor de Despesas
@@ -63,7 +62,7 @@ function LoginPage() {
                   <LoginForm onForgotPassword={handleForgotPassword} />
                   <div className="relative flex items-center justify-center">
                     <div className={`absolute w-full border-t ${theme === 'dark' ? 'border-gray-600' : 'border-gray-300'}`}></div>
-                    <div className={`relative ${colors.container} px-4`}>
+                    <div className={`relative ${colors[theme].container} px-4`}>
                       <span className={`text-sm text-gray-${theme === 'dark' ? '300' : '500'}`}>ou</span>
                     </div>
                   </div>
@@ -74,7 +73,7 @@ function LoginPage() {
                   <RegisterForm />
                   <div className="relative flex items-center justify-center">
                     <div className={`absolute w-full border-t ${theme === 'dark' ? 'border-gray-600' : 'border-gray-300'}`}></div>
-                    <div className={`relative ${colors.container} px-4`}>
+                    <div className={`relative ${colors[theme].container} px-4`}>
                       <span className={`text-sm text-gray-${theme === 'dark' ? '300' : '500'}`}>ou</span>
                     </div>
                   </div>

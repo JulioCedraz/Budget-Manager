@@ -9,7 +9,7 @@ const EditModal = ({
   onSave, 
   categories
 }) => {
-  const { theme, themeColors } = useTheme();
+  const { theme, colors } = useTheme();
   const [editedItem, setEditedItem] = useState({ ...item });
   const [total, setTotal] = useState(0);
 
@@ -42,7 +42,7 @@ const EditModal = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className={`rounded-lg p-6 w-96 relative ${themeColors[theme].container}`}>
+      <div className={`rounded-lg p-6 w-96 relative ${colors[theme].container}`}>
         <button
           onClick={onClose}
           className={`absolute top-2 right-2 ${theme === 'light' ? 'text-gray-500 hover:text-gray-700' : 'text-gray-300 hover:text-gray-100'}`}
@@ -63,7 +63,7 @@ const EditModal = ({
               value={editedItem.produto}
               onChange={handleChange}
               required
-              className={`border rounded-md p-1 w-full ${themeColors[theme].input}`}
+              className={`border rounded-md p-1 w-full ${colors[theme].input}`}
             />
           </div>
 
@@ -75,7 +75,7 @@ const EditModal = ({
               id="categoria"
               value={editedItem.categoria}
               onChange={handleChange}
-              className={`border rounded-md p-1 w-full ${themeColors[theme].input}`}
+              className={`border rounded-md p-1 w-full ${colors[theme].input}`}
               required
             >
               {categories.map((category, index) => (
@@ -97,7 +97,7 @@ const EditModal = ({
               value={editedItem.quantidade}
               onChange={handleChange}
               required
-              className={`border rounded-md p-1 w-full ${themeColors[theme].input}`}
+              className={`border rounded-md p-1 w-full ${colors[theme].input}`}
             />
           </div>
 
@@ -111,7 +111,7 @@ const EditModal = ({
               value={editedItem.custo}
               onChange={handleChange}
               required
-              className={`border rounded-md p-1 w-full ${themeColors[theme].input}`}
+              className={`border rounded-md p-1 w-full ${colors[theme].input}`}
             />
           </div>
 
@@ -122,7 +122,7 @@ const EditModal = ({
               type="text"
               value={`R$ ${total}`}
               readOnly
-              className={`border rounded-md p-1 w-full bg-gray-100 cursor-not-allowed ${themeColors[theme].input}`}
+              className={`border rounded-md p-1 w-full bg-gray-100 cursor-not-allowed ${colors[theme].input}`}
             />
           </div>
 
@@ -136,7 +136,7 @@ const EditModal = ({
               value={editedItem.data}
               onChange={handleChange}
               required
-              className={`border rounded-md p-1 w-full ${themeColors[theme].input}`}
+              className={`border rounded-md p-1 w-full ${colors[theme].input}`}
             />
           </div>
 
@@ -152,7 +152,7 @@ const EditModal = ({
             </button>
             <button
               type="submit"
-              className={`text-white rounded-md p-2 ${themeColors[theme].button.add}`}
+              className={`text-white rounded-md p-2 ${colors[theme].button.add}`}
             >
               Salvar
             </button>

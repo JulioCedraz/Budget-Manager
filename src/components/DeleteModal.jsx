@@ -7,13 +7,13 @@ const DeleteModal = ({
   onClose, 
   onConfirm 
 }) => {
-  const { theme, themeColors } = useTheme();
+  const { theme, colors } = useTheme();
 
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className={`rounded-lg p-6 w-96 relative ${themeColors[theme].container}`}>
+      <div className={`rounded-lg p-6 w-96 relative ${colors[theme].container}`}>
         <button
           onClick={onClose}
           className={`absolute top-2 right-2 ${theme === 'light' 
@@ -41,7 +41,7 @@ const DeleteModal = ({
           <button
             type="button"
             onClick={onConfirm}
-            className={`text-white rounded-md p-2 ${themeColors[theme].button.delete}`}
+            className={`text-white rounded-md p-2 ${colors[theme].button.delete}`}
           >
             Excluir
           </button>

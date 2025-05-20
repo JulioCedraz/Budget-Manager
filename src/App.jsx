@@ -3,7 +3,7 @@ import {
   ThemeProvider,
   ThemeToggle,
   useTheme,
-  themeColors,
+  colors,
 } from "../src/context/Themes";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import BudgetReport from "./components/BudgetReport";
@@ -69,7 +69,7 @@ const AppContent = () => {
   }
 
   return (
-    <div className={`min-h-screen duration-300 ${themeColors[theme].background}`}>
+    <div className={`min-h-screen duration-300 ${colors[theme].background}`}>
       <div className="px-4">
         <div className="container mx-auto flex justify-between items-center mb-4">
           <ThemeToggle />
@@ -79,12 +79,12 @@ const AppContent = () => {
         <h1 className="font-bold text-2xl text-center p-4">Gestor de Despesas</h1>
 
         <div className="container px-4 mx-auto relative overflow-y-auto rounded-xl md:max-w-[70%]">
-          <div className={`p-4 mb-2 rounded-lg ${themeColors[theme].container}`}>
+          <div className={`p-4 mb-2 rounded-lg ${colors[theme].container}`}>
             <BudgetForm
               addRow={addRow}
               categories={categories}
               theme={theme}
-              themeColors={themeColors}
+              colors={colors}
             />
           </div>
 
@@ -97,7 +97,7 @@ const AppContent = () => {
                 id="category-select"
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className={`p-1 border rounded ${themeColors[theme].input}`}
+                className={`p-1 border rounded ${colors[theme].input}`}
               >
                 <option value="Todas">Todas</option>
                 {categories.map((category, index) => (
@@ -112,19 +112,19 @@ const AppContent = () => {
                 value={pdfFileName}
                 onChange={(e) => setPdfFileName(e.target.value)}
                 placeholder="Nome do relatório"
-                className={`p-2 border rounded ${themeColors[theme].input}`}
+                className={`p-2 border rounded ${colors[theme].input}`}
               />
               <PDFDownloadLink
                 document={<BudgetReport budgetData={filteredBudgetData} />}
                 fileName={`${pdfFileName}.pdf`}
-                className={`ml-2 p-2 ${themeColors[theme].button.add} text-white rounded`}
+                className={`ml-2 p-2 ${colors[theme].button.add} text-white rounded`}
               >
                 {({ loading }) => (loading ? "Gerando PDF..." : "Baixar em PDF")}
               </PDFDownloadLink>
             </div>
           </div>
 
-          <div className={`px-4 rounded-lg ${themeColors[theme].container}`}>
+          <div className={`px-4 rounded-lg ${colors[theme].container}`}>
             <BudgetTable
               budgetData={filteredBudgetData}
               deleteRow={openDeleteModal}
@@ -132,7 +132,7 @@ const AppContent = () => {
               categories={categories}
               selectedCategory={selectedCategory}
               theme={theme}
-              themeColors={themeColors}
+              colors={colors}
             />
           </div>
 
@@ -144,7 +144,7 @@ const AppContent = () => {
               onSave={saveEditedRow}
               categories={categories}
               theme={theme}
-              themeColors={themeColors}
+              colors={colors}
             />
           )}
           {deletingIndex !== null && (
@@ -153,7 +153,7 @@ const AppContent = () => {
               onClose={closeDeleteModal}
               onConfirm={confirmDelete}
               theme={theme}
-              themeColors={themeColors}
+              colors={colors}
             />
           )}
         </div>

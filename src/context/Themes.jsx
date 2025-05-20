@@ -3,7 +3,7 @@ import { SunIcon, MoonIcon } from 'lucide-react';
 
 const ThemeContext = createContext();
 
-export const themeColors = {
+export const colors = {
   light: {
     background: 'bg-gray-200 text-gray-900',
     loginBg:'bg-gradient-to-br from-blue-500 via-teal-500 to-emerald-400',
@@ -55,7 +55,7 @@ export const ThemeProvider = ({ children }) => {
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme, themeColors }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme, colors }}>
       {children}
     </ThemeContext.Provider>
   );

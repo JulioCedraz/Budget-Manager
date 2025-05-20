@@ -8,7 +8,7 @@ const BudgetForm = ({ addRow, categories }) => {
   const [custo, setCusto] = useState("");
   const [data, setData] = useState("");
 
-  const { theme, themeColors } = useTheme();
+  const { theme, colors } = useTheme();
 
   const isFormComplete =
     produto.trim() !== "" &&
@@ -45,7 +45,7 @@ const BudgetForm = ({ addRow, categories }) => {
           onChange={(e) => setProduto(e.target.value)}
           placeholder="Informe o produto"
           required
-          className={`border rounded-md p-1 w-[98%] ${themeColors[theme].input}`}
+          className={`border rounded-md p-1 w-[98%] ${colors[theme].input}`}
         />
       </div>
 
@@ -58,7 +58,7 @@ const BudgetForm = ({ addRow, categories }) => {
           value={categoria}
           onChange={(e) => setCategoria(e.target.value)}
           required
-          className={`border rounded-md p-1 w-[98%] ${themeColors[theme].input}`}
+          className={`border rounded-md p-1 w-[98%] ${colors[theme].input}`}
         >
           <option value="">Selecione uma categoria</option>
           {categories.map((category, index) => (
@@ -80,7 +80,7 @@ const BudgetForm = ({ addRow, categories }) => {
           onChange={(e) => setQuantidade(e.target.value)}
           placeholder="Digite a quantidade"
           required
-          className={`border rounded-md p-1 w-[98%] ${themeColors[theme].input}`}
+          className={`border rounded-md p-1 w-[98%] ${colors[theme].input}`}
         />
       </div>
 
@@ -95,7 +95,7 @@ const BudgetForm = ({ addRow, categories }) => {
           onChange={(e) => setCusto(e.target.value)}
           placeholder="Custo"
           required
-          className={`border rounded-md p-1 w-[98%] ${themeColors[theme].input}`}
+          className={`border rounded-md p-1 w-[98%] ${colors[theme].input}`}
         />
       </div>
 
@@ -111,7 +111,7 @@ const BudgetForm = ({ addRow, categories }) => {
           required
           min="1900-01-01"
           max="2099-12-31"
-          className={`border rounded-md p-1 w-[98%] ${themeColors[theme].input}`}
+          className={`border rounded-md p-1 w-[98%] ${colors[theme].input}`}
         />
       </div>
 
@@ -121,7 +121,7 @@ const BudgetForm = ({ addRow, categories }) => {
         className={`duration-300 m-2 p-2 text-white rounded-md 
           ${
             isFormComplete
-              ? `${themeColors[theme].button.add} cursor-pointer`
+              ? `${colors[theme].button.add} cursor-pointer`
               : "bg-gray-400 cursor-not-allowed"
           }
       `}

@@ -89,7 +89,7 @@ function ForgotPasswordForm({ onBack, initialEmail = "" }) {
             id="recovery-email"
             className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 ${
               theme === 'dark' 
-                ? 'bg-gray-700 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-400' 
+                ? 'bg-gray-700 border-gray-600 text-white focus:ring-blue-400 focus:border-blue-400' 
                 : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
             } transition`}
             type="email"
