@@ -17,7 +17,7 @@ function UserInfo() {
   };
 
   return (
-    <div className="flex items-center justify-end space-x-4">
+    <div className="flex items-center justify-end py-4 space-x-4">
       <div className="flex items-center">
         <span className="mr-2 text-sm font-medium">Olá, {getFirstName()}</span>
         {usuario.photoURL ? (
