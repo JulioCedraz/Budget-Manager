@@ -1,13 +1,12 @@
-import React from "react";
 import { FaGithub } from "react-icons/fa";
-import { useTheme } from '../context/Themes';
+import { useTheme, colors } from '../context/Themes';
 
 function Footer() {
   const { theme } = useTheme();
   return (
     <div className={`p-4 w-full text-center`}>
       <footer>
-        <p className={`text-sm ${theme === 'light' ? 'black' : 'white'}`}>
+        <p className={`text-sm ${colors[theme].footer}`}>
           Desenvolvido por{" "}
           <a
           className="font-bold hover:underline inline-flex items-center gap-1"

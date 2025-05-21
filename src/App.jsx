@@ -157,7 +157,7 @@ const AppContent = () => {
             />
           )}
         </div>
-          <Footer />
+        <Footer />
       </div>
     </div>
   );
