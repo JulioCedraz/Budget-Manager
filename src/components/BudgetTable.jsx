@@ -1,17 +1,17 @@
 import React from "react";
 import { Edit2Icon, Trash2Icon } from "lucide-react";
-import { useTheme } from "./Themes.jsx";
+import { useTheme } from "../context/Themes";
 
 const BudgetTable = ({ budgetData, editRow, deleteRow }) => {
-  const { theme, themeColors } = useTheme();
+  const { theme, colors } = useTheme();
 
   return (
     <div className="overflow-x-auto text-nowrap py-2">
       <table
-        className={`my-2 w-full text-center border-2 rounded-md ${themeColors[theme].tableBorder}`}
+        className={`my-2 w-full text-center border-2 rounded-md ${colors[theme].tableBorder}`}
       >
         <thead>
-          <tr className={`${themeColors[theme].tableHeader}`}>
+          <tr className={`${colors[theme].tableHeader}`}>
             <th className="p-2">Produto</th>
             <th className="p-2">Categoria</th>
             <th className="p-2">Quantidade</th>
@@ -32,7 +32,7 @@ const BudgetTable = ({ budgetData, editRow, deleteRow }) => {
             budgetData.map((item, index) => (
               <tr
                 key={index}
-                className={`border-2 ${themeColors[theme].tableBorder}`}
+                className={`border-2 ${colors[theme].tableBorder}`}
               >
                 <td className="p-2">{item.produto}</td>
                 <td>{item.categoria}</td>
@@ -45,7 +45,7 @@ const BudgetTable = ({ budgetData, editRow, deleteRow }) => {
                   <button
                     onClick={() => editRow(index)}
                     title="Editar"
-                    className={`text-white rounded-md m-1 p-1 ${themeColors[theme].button.edit}`}
+                    className={`text-white rounded-md m-1 p-1 ${colors[theme].button.edit}`}
                   >
                     <Edit2Icon />
                   </button>
@@ -53,7 +53,7 @@ const BudgetTable = ({ budgetData, editRow, deleteRow }) => {
                   <button
                     onClick={() => deleteRow(index)}
                     title="Apagar"
-                    className={`text-white rounded-md m-1 p-1 ${themeColors[theme].button.delete}`}
+                    className={`text-white rounded-md m-1 p-1 ${colors[theme].button.delete}`}
                   >
                     <Trash2Icon />
                   </button>

@@ -1,24 +1,23 @@
-import React from "react";
 import { FaGithub } from "react-icons/fa";
-import { useTheme, themeColors } from './Themes.jsx';
+import { useTheme, colors } from '../context/Themes';
 
 function Footer() {
   const { theme } = useTheme();
   return (
-    <div className={`fixed bottom-0 w-full p-2 text-center ${themeColors[theme].background}`}>
+    <div className={`p-4 w-full text-center`}>
       <footer>
-        <p>
+        <p className={`text-sm ${colors[theme].footer}`}>
           Desenvolvido por{" "}
           <a
+          className="font-bold hover:underline inline-flex items-center gap-1"
             href="https://github.com/juliocedraz"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <strong>Julio Cedraz</strong>
+            Julio Cedraz
             <FaGithub
-              size={20}
-              color={`${theme === 'light' ? 'black' : 'white'}`}
-              className="inline-block ml-1 mb-1.5"
+              size={16}
+              className="inline-block"
             />
           </a>
         </p>
