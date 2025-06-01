@@ -2,13 +2,13 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA0OfJxUiERCFzEwW7fqM7VMAQ7biD3qmw",
-  authDomain: "budget-manager-by-julio-cedraz.firebaseapp.com",
-  projectId: "budget-manager-by-julio-cedraz",
-  storageBucket: "budget-manager-by-julio-cedraz.firebasestorage.app",
-  messagingSenderId: "537189823143",
-  appId: "1:537189823143:web:14557db5eb6989d5eda182",
-  measurementId: "G-50NQZTSF94"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 // Inicializa o Firebase
