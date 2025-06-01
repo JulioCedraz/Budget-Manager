@@ -18,7 +18,7 @@ Os produtos serão listados logo abaixo do formulário e podem ser editados, exc
 - Gera uma planilha em PDF com todos os itens listados e o valor total
 - Temas dinâmicos (claro e escuro)
 - Responsividade para dispositivos móveis
-- Autenticação de usuários (atualização da vez!)
+- Autenticação de usuários
 
 ## Em breve
 
