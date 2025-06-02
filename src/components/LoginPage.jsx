@@ -3,6 +3,7 @@ import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 import ForgotPasswordForm from "./ForgotPasswordForm";
 import GoogleLoginButton from "./GoogleLoginButton";
+import AnonymousLoginButton from "./AnonymousLoginButton";
 import Footer from "./Footer";
 import { useTheme, ThemeToggle } from "../context/Themes";
 
@@ -66,7 +67,10 @@ function LoginPage() {
                       <span className={`text-sm text-gray-${theme === 'dark' ? '300' : '500'}`}>ou</span>
                     </div>
                   </div>
-                  <GoogleLoginButton />
+                  <div className="space-y-3">
+                    <GoogleLoginButton />
+                    <AnonymousLoginButton />
+                  </div>
                 </>
               ) : (
                 <>
@@ -77,7 +81,10 @@ function LoginPage() {
                       <span className={`text-sm text-gray-${theme === 'dark' ? '300' : '500'}`}>ou</span>
                     </div>
                   </div>
-                  <GoogleLoginButton />
+                  <div className="space-y-3">
+                    <GoogleLoginButton />
+                    <AnonymousLoginButton />
+                  </div>
                 </>
               )}
             </div>
