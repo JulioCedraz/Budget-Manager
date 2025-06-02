@@ -6,15 +6,15 @@ import {
   colors,
 } from "../src/context/Themes";
 import { PDFDownloadLink } from "@react-pdf/renderer";
-import BudgetReport from "./components/BudgetReport";
+import BudgetPDFReport from "./components/BudgetPDFReport";
 import BudgetTable from "./components/BudgetTable.jsx";
 import BudgetForm from "./components/BudgetForm.jsx";
 import EditModal from "./components/EditModal.jsx";
 import DeleteModal from "./components/DeleteModal.jsx";
 import Footer from "./components/Footer.jsx";
 import { AuthProvider, AuthContext } from "./context/AuthProvider";
-import LoginPage from "./components/LoginPage";
-import UserInfo from "./components/UserInfo";
+import LoginPage from "./components/login/LoginPage.jsx";
+import UserInfo from "./components/login/UserInfo.jsx";
 
 const AppContent = () => {
   const { usuario } = useContext(AuthContext);
@@ -115,7 +115,7 @@ const AppContent = () => {
                 className={`p-2 border rounded ${colors[theme].input}`}
               />
               <PDFDownloadLink
-                document={<BudgetReport budgetData={filteredBudgetData} />}
+                document={<BudgetPDFReport budgetData={filteredBudgetData} />}
                 fileName={`${pdfFileName}.pdf`}
                 className={`ml-2 p-2 ${colors[theme].button.add} text-white rounded`}
               >

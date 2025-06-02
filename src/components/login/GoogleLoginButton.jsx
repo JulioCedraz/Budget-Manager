@@ -5,8 +5,8 @@ import {
   signInWithRedirect, 
   getRedirectResult 
 } from "firebase/auth";
-import { auth } from "../Firebase";
-import { useTheme } from "../context/Themes";
+import { auth } from "../../Firebase";
+import { useTheme } from "../../context/Themes";
 
 function GoogleLoginButton() {
   const { theme } = useTheme();

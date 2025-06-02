@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { signInAnonymously } from "firebase/auth";
-import { auth } from "../Firebase";
-import { useTheme } from "../context/Themes";
+import { auth } from "../../Firebase";
+import { useTheme } from "../../context/Themes";
 
 function AnonymousLoginButton() {
   const [isLoading, setIsLoading] = useState(false);

@@ -4,8 +4,8 @@ import RegisterForm from "./RegisterForm";
 import ForgotPasswordForm from "./ForgotPasswordForm";
 import GoogleLoginButton from "./GoogleLoginButton";
 import AnonymousLoginButton from "./AnonymousLoginButton";
-import Footer from "./Footer";
-import { useTheme, ThemeToggle } from "../context/Themes";
+import Footer from "../Footer";
+import { useTheme, ThemeToggle } from "../../context/Themes";
 
 function LoginPage() {
   const [activeTab, setActiveTab] = useState("login");

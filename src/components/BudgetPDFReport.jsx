@@ -123,7 +123,7 @@ const formatGenerationDate = () => {
 };
 
 // Componente principal
-const BudgetReport = ({ budgetData = new Date() }) => {
+const BudgetPDFReport = ({ budgetData = new Date() }) => {
   // Cálculo dos totais e contagem de produtos
   const totals = budgetData.reduce(
     (acc, item) => {
@@ -211,4 +211,4 @@ const BudgetReport = ({ budgetData = new Date() }) => {
   );
 };
 
-export default BudgetReport;
+export default BudgetPDFReport;

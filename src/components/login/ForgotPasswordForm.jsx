@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { sendPasswordResetEmail, fetchSignInMethodsForEmail } from "firebase/auth";
-import { auth } from "../Firebase";
-import { useTheme } from "../context/Themes";
+import { auth } from "../../Firebase";
+import { useTheme } from "../../context/Themes";
 
 function ForgotPasswordForm({ onBack, initialEmail = "" }) {
   const [email, setEmail] = useState(initialEmail);
